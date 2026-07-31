@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ጾመ ፍልሰታ ፪፯፻፲፰ | Tsome Filseta 2026</title>
+  <title>ደብረ ሰላም ቅድስት ማርያም ኢ/ኦ/ተ/ቤተ ክርስቲያን | Debre Selam Kidus Mariam EOTC DC</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -29,46 +29,53 @@
     }
   </script>
   
-  <!-- Alpine.js for UI interactivity & Language State -->
+  <!-- Alpine.js for Interactivity & Language State -->
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-amber-200 selection:text-amber-900">
 
+  <!-- Top Announcement Bar -->
+  <div class="bg-amber-600 text-slate-950 font-bold text-xs py-2 px-4 text-center border-b border-amber-700/30 flex items-center justify-center gap-2">
+    <span>✝</span>
+    <span x-text="lang === 'am' ? 'ደብረ ሰላም ቅድስት ማርያም ኢ/ኦ/ተ/ቤተ ክርስቲያን ዋሽንግተን ዲሲ - የጾመ ፍልሰታ ልዩ ሱባኤ' : 'Debre Selam Kidus Mariam EOTC Washington DC - Filseta Special Fasting Season'"></span>
+    <span>✝</span>
+  </div>
+
   <!-- Header / Navigation -->
   <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-amber-600/30 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Brand / Logo -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-600 to-yellow-400 flex items-center justify-center text-slate-900 font-extrabold text-xl shadow-lg">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-600 to-yellow-400 flex items-center justify-center text-slate-900 font-black text-2xl shadow-lg border-2 border-amber-300">
           ✝
         </div>
         <div>
-          <h1 class="text-base sm:text-lg font-bold leading-tight text-amber-400" x-text="lang === 'am' ? 'የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን' : 'Ethiopian Orthodox Tewahedo Church'"></h1>
-          <p class="text-xs text-slate-300 tracking-wider uppercase font-semibold" x-text="lang === 'am' ? 'ጾመ ፍልሰታ ልዩ የጸሎት መርሃ ግብር' : 'Tsome Filseta Special Prayer Services'"></p>
+          <h1 class="text-base sm:text-lg font-bold leading-tight text-amber-400" x-text="lang === 'am' ? 'ደብረ ሰላም ቅድስት ማርያም' : 'Debre Selam Kidus Mariam'"></h1>
+          <p class="text-xs text-slate-300 tracking-wider uppercase font-medium" x-text="lang === 'am' ? 'የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን (ዋሽንግተን ዲሲ)' : 'Ethiopian Orthodox Tewahedo Church (DC)'"></p>
         </div>
-      </div>
+      </a>
 
       <!-- Navigation & Language Switcher -->
-      <div class="flex items-center gap-4 sm:gap-6">
+      <div class="flex items-center gap-3 sm:gap-6">
         <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-          <a href="#about" class="hover:text-amber-400 transition" x-text="lang === 'am' ? 'ስለ ፍልሰታ' : 'About Filseta'"></a>
-          <a href="#schedule" class="hover:text-amber-400 transition" x-text="lang === 'am' ? 'የጸሎት መርሃ ግብር' : 'Daily Schedule'"></a>
+          <a href="#about" class="hover:text-amber-400 transition" x-text="lang === 'am' ? 'ስለ ቤተ ክርስቲያኑ' : 'About'"></a>
+          <a href="#schedule" class="hover:text-amber-400 transition" x-text="lang === 'am' ? 'የሱባኤ መርሃ ግብር' : 'Fast Schedule'"></a>
           <a href="#livestream" class="hover:text-amber-400 transition" x-text="lang === 'am' ? 'ቀጥታ ስርጭት' : 'Live Stream'"></a>
-          <a href="#contact" class="hover:text-amber-400 transition" x-text="lang === 'am' ? 'አድራሻ' : 'Contact'"></a>
+          <a href="#contact" class="hover:text-amber-400 transition" x-text="lang === 'am' ? 'አድራሻ' : 'Contact & Map'"></a>
         </nav>
 
         <!-- Language Toggle Button -->
         <button 
           @click="lang = (lang === 'am' ? 'en' : 'am')" 
-          class="bg-slate-800 hover:bg-slate-700 border border-amber-500/40 text-amber-300 px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-2 shadow-sm">
+          class="bg-slate-800 hover:bg-slate-700 border border-amber-500/50 text-amber-300 px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
           <i data-lucide="globe" class="w-4 h-4 text-amber-400"></i>
           <span x-text="lang === 'am' ? 'English' : 'አማርኛ'"></span>
         </button>
 
-        <a href="#livestream" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold px-3.5 py-1.5 rounded-lg text-xs sm:text-sm transition shadow-md flex items-center gap-2">
+        <a href="#livestream" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold px-3.5 py-1.5 rounded-lg text-xs sm:text-sm transition shadow-md flex items-center gap-1.5">
           <i data-lucide="tv" class="w-4 h-4"></i>
           <span x-text="lang === 'am' ? 'ቀጥታ ስርጭት' : 'Live Stream'"></span>
         </a>
@@ -78,16 +85,16 @@
 
   <!-- Hero Banner -->
   <section class="relative bg-slate-900 text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden border-b-4 border-amber-500">
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px]"></div>
     
     <div class="max-w-5xl mx-auto text-center relative z-10">
       <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs sm:text-sm font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
-        <span>✨ <span x-text="lang === 'am' ? 'የሱባኤ እና የጸሎት ወቅት' : 'Special Spiritual Season'"></span></span>
+        <span>✨ <span x-text="lang === 'am' ? 'የ16 ቀናት የሱባኤ እና የጸሎት ወቅት' : '16-Day Sacred Subae Season'"></span></span>
         <span>•</span>
         <span class="font-bold text-amber-400" x-text="lang === 'am' ? 'ነሐሴ ፩ - ነሐሴ ፲፮' : 'August 7 – August 22'"></span>
       </div>
       
-      <h1 class="text-4xl sm:text-6xl font-serif font-bold text-amber-400 tracking-tight leading-tight" x-text="lang === 'am' ? 'ጾመ ፍልሰታ ለማርያም' : 'The Fast of Assumption of St. Mary'">
+      <h1 class="text-4xl sm:text-6xl font-serif font-bold text-amber-400 tracking-tight leading-tight" x-text="lang === 'am' ? 'ጾመ ፍልሰታ ለማርያም በደብረ ሰላም' : 'The Fast of Assumption at DSK Mariam'">
       </h1>
       
       <p class="text-xl sm:text-2xl text-slate-200 mt-4 font-serif italic">
@@ -95,7 +102,7 @@
         <span class="text-amber-400 font-sans not-italic text-base" x-text="lang === 'am' ? '— የሉቃስ ወንጌል ፩:፵፰' : '— Luke 1:48'"></span>
       </p>
 
-      <p class="mt-6 text-slate-300 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed" x-text="lang === 'am' ? 'ከነሐሴ ፩ እስከ ነሐሴ ፲፮ ድረስ በቤተ ክርስቲያናችን በሚካሄደው የ16 ቀን የሱባኤ፣ የቅዳሴ፣ የሰዓታት እና የትምህርተ ወንጌል መርሃ ግብር ላይ በመገኘት የብርሃን እናታችንን በረከት እናግኝ።' : 'Join our parish from August 7 to August 22 for 16 days of intensive fasting, prayer, midnight vigils (Mahlet), and daily Divine Liturgy (Kidasse).'">
+      <p class="mt-6 text-slate-300 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed" x-text="lang === 'am' ? 'በዋሽንግተን ዲሲ የደብረ ሰላም ቅድስት ማርያም ኢ/ኦ/ተ ቤተ ክርስቲያን ምእመናን ከነሐሴ ፩ እስከ ነሐሴ ፲፮ በሚካሄደው የ16 ቀን የሱባኤ፣ የሌሊት ማህሌት፣ የዕለታዊ ቅዳሴ እና የትምህርተ ወንጌል መርሃ ግብር ላይ በመገኘት የእመቤታችንን በረከት እንድትቀበሉ ጥሪ ያቀርባል።' : 'Join the Debre Selam Kidus Mariam parish in Washington, D.C. from August 7 to August 22 for 16 days of intensive prayer, midnight Mahlet, daily Kidasse, and spiritual lectures.'">
       </p>
 
       <!-- Key Service Timings -->
@@ -103,17 +110,17 @@
         <div class="bg-slate-800/80 border border-slate-700 p-4 rounded-xl backdrop-blur">
           <i data-lucide="moon" class="w-6 h-6 text-amber-400 mx-auto mb-2"></i>
           <h2 class="font-bold text-slate-100 text-sm" x-text="lang === 'am' ? 'ማህሌት / ሰዓታት' : 'Night Vigil (Mahlet)'"></h2>
-          <p class="text-xs text-amber-300 mt-1" x-text="lang === 'am' ? 'ከሌሊቱ 9:30 - 12:00' : '3:30 AM – 6:00 AM'"></p>
+          <p class="text-xs text-amber-300 mt-1" x-text="lang === 'am' ? 'ከሌሊቱ 3:30 AM - 6:00 AM' : '3:30 AM – 6:00 AM'"></p>
         </div>
         <div class="bg-slate-800/80 border border-slate-700 p-4 rounded-xl backdrop-blur">
           <i data-lucide="book-open" class="w-6 h-6 text-amber-400 mx-auto mb-2"></i>
           <h2 class="font-bold text-slate-100 text-sm" x-text="lang === 'am' ? 'ኪዳን እና ትምህርት' : 'Covenant & Preaching'"></h2>
-          <p class="text-xs text-amber-300 mt-1" x-text="lang === 'am' ? 'ከጠዋቱ 12:00 - 2:00' : '6:00 AM – 8:00 AM'"></p>
+          <p class="text-xs text-amber-300 mt-1" x-text="lang === 'am' ? 'ከጠዋቱ 6:00 AM - 8:00 AM' : '6:00 AM – 8:00 AM'"></p>
         </div>
         <div class="bg-slate-800/80 border border-slate-700 p-4 rounded-xl backdrop-blur">
           <i data-lucide="sun" class="w-6 h-6 text-amber-400 mx-auto mb-2"></i>
           <h2 class="font-bold text-slate-100 text-sm" x-text="lang === 'am' ? 'ማዕከላዊ ቅዳሴ' : 'Divine Liturgy (Kidasse)'"></h2>
-          <p class="text-xs text-amber-300 mt-1" x-text="lang === 'am' ? 'ከቀኑ 7:00 - 9:00 (እሁድ: 12:00)' : '1:00 PM – 3:00 PM (Sun: 6 AM)'"></p>
+          <p class="text-xs text-amber-300 mt-1" x-text="lang === 'am' ? 'ከቀኑ 1:00 PM - 3:00 PM (እሁድ 6 AM)' : '1:00 PM – 3:00 PM (Sun: 6 AM)'"></p>
         </div>
       </div>
     </div>
@@ -123,17 +130,18 @@
   <section id="about" class="py-16 max-w-6xl mx-auto px-4 sm:px-6">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-sm">
       <div class="lg:col-span-7 space-y-4">
-        <span class="text-amber-600 font-bold text-sm tracking-wider uppercase" x-text="lang === 'am' ? 'መንፈሳዊ ምስጢር' : 'Spiritual Significance'"></span>
-        <h2 class="text-3xl font-serif font-bold text-slate-900" x-text="lang === 'am' ? 'ጾመ ፍልሰታ ምንድን ነው?' : 'What is Tsome Filseta?'"></h2>
-        <p class="text-slate-600 leading-relaxed text-sm sm:text-base" x-text="lang === 'am' ? '«ፍልሰታ» ማለት ከአንድ ቦታ ወደ ሌላ ቦታ ማለፍ ወይም መፈለስ ማለት ነው። እመቤታችን ቅድስት ድንግል ማርያም ከዚህ ዓለም በሞት ከተለየች በኋላ ሥጋዋ በክብር ማረፉንና ማረጓን ሐዋርያት በሱባኤ ተግተው ስላዩ፣ የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ምእመናን ይህንን አርአያ በመከተል በጾም እና በጸሎት ያሳልፋሉ።' : '\'Filseta\' signifies the bodily ascension of the Blessed Virgin Mary to Heaven. Following the tradition of the Holy Apostles who fasted for two weeks to behold her resurrection and ascension, the Ethiopian Orthodox Tewahedo Church observes this fast each year with deep devotion.'">
+        <span class="text-amber-600 font-bold text-sm tracking-wider uppercase" x-text="lang === 'am' ? 'ደብረ ሰላም ቅድስት ማርያም ቤተ ክርስቲያን' : 'DSK Mariam Church Washington DC'"></span>
+        <h2 class="text-3xl font-serif font-bold text-slate-900" x-text="lang === 'am' ? 'ስለ ቤተ ክርስቲያናችን እና ስለ ጾመ ፍልሰታ' : 'About Our Parish & Tsome Filseta'"></h2>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base" x-text="lang === 'am' ? 'በዋሽንግተን ዲሲ የሚገኘው የደብረ ሰላም ቅድስት ማርያም ኢ/ኦ/ተ ቤተ ክርስቲያን የሐዋርያትን እምነት፣ ሥርዓት እና ትፌት ጠብቆ በዲሲ እና በአካባቢው ለሚገኘው ምእመን መንፈሳዊ አገልግሎት በመስጠት ላይ ይገኛል።' : 'Debre Selam Kidus Mariam Ethiopian Orthodox Tewahedo Church serves as a spiritual sanctuary for Orthodox Christians in Washington, D.C. and the surrounding Greater Metropolitan Area.'">
         </p>
-        <p class="text-slate-600 leading-relaxed text-sm sm:text-base" x-text="lang === 'am' ? 'በነዚህ 16 ቀናት ምእመናን፣ ሕፃናትና አበው በየዕለቱ ወደ ቤተ ክርስቲያን በመገኘት በሱባኤ፣ በቆርባን፣ በስግደት እና በመንፈሳዊ ትምህርት በረከትን ይቀበላሉ።' : 'Faithful believers—young and old—gather daily in the church compound for Subae, partaking in Holy Communion, prostrations, and spiritual teachings.'">
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base" x-text="lang === 'am' ? 'ጾመ ፍልሰታ የእመቤታችን ቅድስት ድንግል ማርያም የዕርገት በዓል ዝግጅት ሲሆን፣ በነዚህ 16 ቀናት ምእመናን በጾም፣ በጸሎት፣ በስግደት እና በቅዱስ ቁርባን በረከትን ይቀበላሉ።' : 'During Tsome Filseta (Fast of the Assumption), believers observe 16 days of prostration, fasting, and Holy Communion in commemoration of St. Mary\'s bodily assumption into heaven.'">
         </p>
       </div>
       <div class="lg:col-span-5 flex justify-center">
-        <div class="relative rounded-2xl overflow-hidden border-4 border-amber-500/20 shadow-xl">
-          <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?auto=format&fit=crop&w=800&q=80" alt="Ethiopian Orthodox Church Iconography" class="w-full h-80 object-cover" />
-          <div class="bg-slate-900 text-slate-200 text-xs p-3 text-center border-t border-slate-800" x-text="lang === 'am' ? 'የእመቤታችን ቅድስት ድንግል ማርያም የዕርገት ሥዕል' : 'Iconography of the Ascension of St. Mary'">
+        <div class="relative rounded-2xl overflow-hidden border-4 border-amber-500/20 shadow-xl w-full">
+          <!-- Real photo from DSK Mariam Church DC -->
+          <img src="https://twt-thumbs.washtimes.com/media/image/2025/04/16/Ethiopian_Church_Washington_DC_14414_c0-301-6104-3859_s1770x1032.jpg?a9c72e651e7d5e7f61d34f9c055f4268b0dc5e8b" alt="Debre Selam Kidus Mariam Church Liturgy" class="w-full h-80 object-cover" />
+          <div class="bg-slate-900 text-slate-200 text-xs p-3 text-center border-t border-slate-800" x-text="lang === 'am' ? 'የደብረ ሰላም ቅድስት ማርያም ቤተ ክርስቲያን የቅዳሴ አገልግሎት (ዋሽንግተን ዲሲ)' : 'Divine Liturgy at Debre Selam Kidus Mariam Church (Washington, DC)'">
           </div>
         </div>
       </div>
@@ -143,7 +151,7 @@
   <!-- Daily Program Schedule Section -->
   <section id="schedule" class="py-12 max-w-7xl mx-auto px-4 sm:px-6">
     <div class="text-center mb-10">
-      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-900" x-text="lang === 'am' ? 'የዕለት ተዕለት የጸሎት መርሃ ግብር' : 'Daily Service Schedule'"></h2>
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-900" x-text="lang === 'am' ? 'የሱባኤ ዕለታዊ መርሃ ግብር' : 'Daily Subae Fasting Schedule'"></h2>
       <p class="text-slate-600 mt-2" x-text="lang === 'am' ? 'ከነሐሴ ፩ እስከ ነሐሴ ፲፮ (August 7 – August 22)' : 'August 7 – August 22 (ነሐሴ ፩ – ነሐሴ ፲፮)'"></p>
 
       <!-- Filter Buttons -->
@@ -166,7 +174,7 @@
         <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'መግቢያ - ትልቁ ሱባኤ' : 'Entrance into Subae'"></h3>
         <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'የጾመ ፍልሰታ መጀመሪያ እና የጸሎት አጀማመር።' : 'Beginning of the 16-day Fasting Season.'"></p>
         <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-          <div><strong x-text="lang === 'am' ? 'ቅዳሴ:' : 'Kidasse:'"></strong> <span x-text="lang === 'am' ? '7:00 - 9:00 (ከቀኑ)' : '1:00 PM – 3:00 PM'"></span></div>
+          <div><strong x-text="lang === 'am' ? 'ቅዳሴ:' : 'Kidasse:'"></strong> <span x-text="lang === 'am' ? '1:00 PM - 3:00 PM' : '1:00 PM – 3:00 PM'"></span></div>
           <div><strong x-text="lang === 'am' ? 'ትምህርት:' : 'Sermon:'"></strong> <span x-text="lang === 'am' ? 'የጾመ ፍልሰታ መንፈሳዊ ጥቅም' : 'The Meaning of Filseta Fasting'"></span></div>
         </div>
       </div>
@@ -180,7 +188,7 @@
         <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'የሐዋርያት ሱባኤ' : 'Devotion of the Apostles'"></h3>
         <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'የቅዱሳን ሐዋርያትን ፍቅርና ጾም ማሰብ።' : 'Honoring the faith of the Holy Disciples.'"></p>
         <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-          <div><strong x-text="lang === 'am' ? 'ቅዳሴ:' : 'Kidasse:'"></strong> <span x-text="lang === 'am' ? '1:00 - 3:30 (ጠዋት)' : '7:00 AM – 9:30 AM'"></span></div>
+          <div><strong x-text="lang === 'am' ? 'ቅዳሴ:' : 'Kidasse:'"></strong> <span x-text="lang === 'am' ? '7:00 AM - 9:30 AM' : '7:00 AM – 9:30 AM'"></span></div>
           <div><strong x-text="lang === 'am' ? 'ትምህርት:' : 'Sermon:'"></strong> <span x-text="lang === 'am' ? 'ጾም እንደ መንፈሳዊ ዕቃ ጦር' : 'Fasting as Spiritual Armor'"></span></div>
         </div>
       </div>
@@ -196,160 +204,6 @@
         <div class="mt-4 pt-3 border-t border-amber-200 text-xs text-slate-700 space-y-1">
           <div><strong x-text="lang === 'am' ? 'ማህሌት:' : 'Night Vigil:'"></strong> 1:00 AM | <strong x-text="lang === 'am' ? 'ቅዳሴ:' : 'Kidasse:'"></strong> 6:00 AM – 9:30 AM</div>
           <div><strong x-text="lang === 'am' ? 'የአጋፔ ማዕድ:' : 'Agape Gathering:'"></strong> <span x-text="lang === 'am' ? 'ከቅዳሴ በኋላ' : 'Following Liturgy'"></span></div>
-        </div>
-      </div>
-
-      <!-- Day 4 -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-500 transition">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ቀን ፬ • ነሐሴ ፬' : 'Day 4 • Aug 10'"></span>
-          <span class="text-xs text-slate-400 font-medium" x-text="lang === 'am' ? 'ሰኞ' : 'Monday'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'ድንግል ማርያም - የቃል ኪዳኑ ታቦት' : 'St. Mary - Ark of Covenant'"></h3>
-        <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'እመቤታችን የአምላክ ማደሪያ የመሆኗ ምስጢር።' : 'St. Mary as the living Tabernacle.'"></p>
-        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-          <div><strong>ቅዳሴ:</strong> 1:00 PM – 3:00 PM</div>
-          <div><strong x-text="lang === 'am' ? 'ሠርክ ጸሎት:' : 'Evening Prayer:'"></strong> 5:30 PM – 7:00 PM</div>
-        </div>
-      </div>
-
-      <!-- Day 5 -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-500 transition">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ቀን ፭ • ነሐሴ ፭' : 'Day 5 • Aug 11'"></span>
-          <span class="text-xs text-slate-400 font-medium" x-text="lang === 'am' ? 'ማክሰኞ' : 'Tuesday'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'ንሥሐ እና ንጽሕና' : 'Repentance & Purity'"></h3>
-        <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'ልቦናን በንሥሐ ማደስ እና ለቁርባን መዘጋጀት።' : 'Mid-fast focus on confession and purity.'"></p>
-        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-          <div><strong>ቅዳሴ:</strong> 1:00 PM – 3:00 PM</div>
-          <div><strong x-text="lang === 'am' ? 'የንሥሐ አባት ሰዓት:' : 'Confession Hours:'"></strong> 3:30 PM – 5:30 PM</div>
-        </div>
-      </div>
-
-      <!-- Day 6 -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-500 transition">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ቀን ፮ • ነሐሴ ፮' : 'Day 6 • Aug 12'"></span>
-          <span class="text-xs text-slate-400 font-medium" x-text="lang === 'am' ? 'ረቡዕ' : 'Wednesday'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'ዕፀ ሕይወት በገነት' : 'Tree of Life in Paradise'"></h3>
-        <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'እመቤታችን በገነት ከዕፀ ሕይወት ሥር የመቀመጧ ምስጢር።' : 'Contemplating St. Mary under the Tree of Life.'"></p>
-        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-          <div><strong>ቅዳሴ:</strong> 1:00 PM – 3:00 PM</div>
-          <div><strong x-text="lang === 'am' ? 'ጸሎት:' : 'Hymns:'"></strong> መልክአ ማርያም</div>
-        </div>
-      </div>
-
-      <!-- Day 7 -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-500 transition">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ቀን ፯ • ነሐሴ ፯' : 'Day 7 • Aug 13'"></span>
-          <span class="text-xs text-slate-400 font-medium" x-text="lang === 'am' ? 'ሐሙስ' : 'Thursday'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'የእመቤታችን አማላጅነት' : 'Intercession of Theotokos'"></h3>
-        <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'በወላዲተ አምላክ አማላጅነት ምሕረትን መለመን።' : 'Seeking mercy through the Mother of God.'"></p>
-        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-          <div><strong>ቅዳሴ:</strong> 1:00 PM – 3:00 PM</div>
-          <div><strong x-text="lang === 'am' ? 'ትምህርት:' : 'Sermon:'"></strong> <span x-text="lang === 'am' ? 'የአማላጅነት መጽሐፍ ቅዱሳዊ መሠረት' : 'Biblical Proofs of Intercession'"></span></div>
-        </div>
-      </div>
-
-      <!-- Day 8 -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-500 transition">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ቀን ፰ • ነሐሴ ፰' : 'Day 8 • Aug 14'"></span>
-          <span class="text-xs text-slate-400 font-medium" x-text="lang === 'am' ? 'አርብ' : 'Friday'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'ትህትና እና አገልግሎት' : 'Humility & Service'"></h3>
-        <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'የእግዚአብሔርን አገልጋይ ትህትና መከተል።' : 'Imitating the humility of the Handmaid.'"></p>
-        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-          <div><strong>ቅዳሴ:</strong> 1:00 PM – 3:00 PM</div>
-          <div><strong x-text="lang === 'am' ? 'የወጣቶች መርሃ ግብር:' : 'Youth Service:'"></strong> 6:00 PM</div>
-        </div>
-      </div>
-
-      <!-- Day 9 -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-500 transition">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ቀን ፱ • ነሐሴ ፱' : 'Day 9 • Aug 15'"></span>
-          <span class="text-xs text-slate-400 font-medium" x-text="lang === 'am' ? 'ቅዳሜ' : 'Saturday'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'የቅዱስ ዮሐንስ ምስክርነት' : 'Witness of St. John'"></h3>
-        <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'በመስቀል ሥር እመቤታችንን የተቀበለው የቅዱስ ዮሐንስ ታሪክ።' : 'Remembering the disciple entrusted to St. Mary.'"></p>
-        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-          <div><strong>ቅዳሴ:</strong> 7:00 AM – 9:30 AM</div>
-          <div><strong x-text="lang === 'am' ? 'የመጽሐፍ ቅዱስ ጥናት:' : 'Bible Study:'"></strong> የዮሐንስ ወንጌል ምዕራፍ 19</div>
-        </div>
-      </div>
-
-      <!-- Day 10 (Sunday) -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekends'" class="bg-amber-50 border border-amber-300 rounded-xl p-5 shadow-sm">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-600 text-white text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ቀን ፲ • ነሐሴ ፲' : 'Day 10 • Aug 16'"></span>
-          <span class="text-xs text-amber-800 font-bold" x-text="lang === 'am' ? '2ኛው እሁድ' : '2nd Sunday'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'የክረምት እና የምድር በረከት ጸሎት' : 'Blessing of the Rain & Crops'"></h3>
-        <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'ስለ ሀገር ሰላም እና ስለ ክረምቱ ዝናብ በረከት የሚደረግ ጸሎት።' : 'Special prayers for peace and seasonal rain.'"></p>
-        <div class="mt-4 pt-3 border-t border-amber-200 text-xs text-slate-700 space-y-1">
-          <div><strong>ቅዳሴ:</strong> 6:00 AM – 9:30 AM</div>
-          <div><strong x-text="lang === 'am' ? 'የሕፃናት መዝሙር:' : 'Children\'s Hymns:'"></strong> 10:00 AM</div>
-        </div>
-      </div>
-
-      <!-- Day 11 -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-500 transition">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ቀን ፲፩ • ነሐሴ ፲፩' : 'Day 11 • Aug 17'"></span>
-          <span class="text-xs text-slate-400 font-medium" x-text="lang === 'am' ? 'ሰኞ' : 'Monday'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'የቅዱስ ቶማስ ራእይ እና ሰበን' : 'Vision of St. Thomas'"></h3>
-        <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'ቅዱስ ቶማስ የእመቤታችንን መግነዝ (ሰበን) የተቀበለበት ተአምር።' : 'The miracle of the shroud given to St. Thomas.'"></p>
-        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-          <div><strong>ቅዳሴ:</strong> 1:00 PM – 3:00 PM</div>
-          <div><strong x-text="lang === 'am' ? 'ትምህርት:' : 'Sermon:'"></strong> የሐዋርያው ቶማስ ምስክርነት</div>
-        </div>
-      </div>
-
-      <!-- Day 12 -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-500 transition">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ቀን ፲፪ • ነሐሴ ፲፪' : 'Day 12 • Aug 18'"></span>
-          <span class="text-xs text-slate-400 font-medium" x-text="lang === 'am' ? 'ማክሰኞ' : 'Tuesday'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'የቅዱስ ሚካኤል ወርሃዊ በዓል' : 'Feast of Archangel Michael'"></h3>
-        <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'በጾመ ፍልሰታ ውስጥ የሚከበረው የሊቀ መላእክት ቅዱስ ሚካኤል በዓል።' : 'Monthly commemoration of St. Michael.'"></p>
-        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-          <div><strong>ቅዳሴ:</strong> 1:00 PM – 3:00 PM</div>
-          <div><strong x-text="lang === 'am' ? 'ጸሎት:' : 'Prayer:'"></strong> የሰራዊት ጌታ መልአክ ጥበቃ</div>
-        </div>
-      </div>
-
-      <!-- Day 13 -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-500 transition">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ቀን ፲፫ • ነሐሴ ፲፫' : 'Day 13 • Aug 19'"></span>
-          <span class="text-xs text-slate-400 font-medium" x-text="lang === 'am' ? 'ረቡዕ' : 'Wednesday'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'ደብረ ታቦር (ቡሄ)' : 'Feast of Debre Tabor (Buhe)'"></h3>
-        <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'ጌታችን በደብረ ታቦር ተራራ ላይ ብርሃነ መለኮቱን የገለጠበት ታላቅ በዓል።' : 'Transfiguration of Our Lord Jesus Christ.'"></p>
-        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-          <div><strong>ቅዳሴ:</strong> 1:00 PM – 3:00 PM</div>
-          <div><strong x-text="lang === 'am' ? 'ባህል:' : 'Tradition:'"></strong> <span x-text="lang === 'am' ? 'የሙልሙል ዳቦ ማደል' : 'Distribution of Mulmul Bread'"></span></div>
-        </div>
-      </div>
-
-      <!-- Day 14 -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-500 transition">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ቀን ፲፬ • ነሐሴ ፲፬' : 'Day 14 • Aug 20'"></span>
-          <span class="text-xs text-slate-400 font-medium" x-text="lang === 'am' ? 'ሐሙስ' : 'Thursday'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'ቅድስት ሥጋዋ በጌቴሴማኔ' : 'Burial in Gethsemane'"></h3>
-        <p class="text-xs text-slate-600 mt-1" x-text="lang === 'am' ? 'የእመቤታችን ቅዱስ ሥጋ በጌቴሴማኔ የተቀበረበትን ምስጢር ማሰብ።' : 'Remembering the sacred burial in Gethsemane.'"></p>
-        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 space-y-1">
-          <div><strong>ቅዳሴ:</strong> 1:00 PM – 3:00 PM</div>
-          <div><strong x-text="lang === 'am' ? 'የንሥሐ ሰዓት:' : 'Confession:'"></strong> 4:00 PM – 7:00 PM</div>
         </div>
       </div>
 
@@ -374,7 +228,7 @@
           <span class="text-xs text-amber-100 font-extrabold uppercase tracking-wide" x-text="lang === 'am' ? 'ታላቁ በዓል!' : 'Great Feast Day!'"></span>
         </div>
         <h3 class="font-extrabold text-white text-lg" x-text="lang === 'am' ? 'የእመቤታችን የዕርገት በዓል' : 'Ascension of St. Mary (ዕርገታ)'"></h3>
-        <p class="text-xs text-amber-100 mt-1" x-text="lang === 'am' ? 'የእመቤታችን ቅድስት ድንግል ማርያም የትንስኤዋ እና የዕርገቷ በዓል!' : 'The bodily Assumption & Ascension of St. Mary.'"></p>
+        <p class="text-xs text-amber-100 mt-1" x-text="lang === 'am' ? 'የእመቤታችን ቅድስት ድንግል ማርያም የትንስኤዋ እና የዕርገቷ በዓል በደብረ ሰላም!' : 'The bodily Assumption & Ascension of St. Mary at DSK Mariam.'"></p>
         <div class="mt-4 pt-3 border-t border-amber-500/50 text-xs text-amber-100 space-y-1">
           <div><strong x-text="lang === 'am' ? 'የበዓሉ ቅዳሴ:' : 'Festal Liturgy:'"></strong> 5:00 AM – 9:30 AM</div>
           <div><strong x-text="lang === 'am' ? 'ቅዱስ ቁርባን:' : 'Holy Communion:'"></strong> <span x-text="lang === 'am' ? 'ለተዘጋጁ ምእመናን ይበቃል' : 'Served to prepared faithful'"></span></div>
@@ -389,18 +243,18 @@
   <section id="livestream" class="bg-slate-900 text-white py-16 px-4 sm:px-6">
     <div class="max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-amber-900/40 via-slate-800 to-slate-900 border border-amber-500/30 p-8 sm:p-12 text-center relative overflow-hidden">
       <i data-lucide="youtube" class="w-16 h-16 text-red-500 mx-auto mb-4"></i>
-      <h2 class="text-3xl font-serif font-bold text-amber-400" x-text="lang === 'am' ? 'በአካል መገኘት ካልቻሉ በቀጥታ ስርጭት ይከታተሉ' : 'Can\'t Attend in Person? Join Our Live Stream'"></h2>
-      <p class="text-slate-300 mt-3 max-w-2xl mx-auto text-sm sm:text-base" x-text="lang === 'am' ? 'በየዕለቱ የሚካሄደው የማህሌት፣ የቅዳሴ እና የትምህርተ ወንጌል መርሃ ግብር በዩቲዩብ እና ፌስቡክ ገጻችን በኩል በቀጥታ ይተላለፋል።' : 'All daily Vigils, Morning Preachings, and Divine Liturgies will be broadcast live for remote faithful around the world.'">
+      <h2 class="text-3xl font-serif font-bold text-amber-400" x-text="lang === 'am' ? 'በደብረ ሰላም ቅድስት ማርያም ቀጥታ ስርጭት ይከታተሉ' : 'Watch DSK Mariam Live Streams'"></h2>
+      <p class="text-slate-300 mt-3 max-w-2xl mx-auto text-sm sm:text-base" x-text="lang === 'am' ? 'በአካል መገኘት ካልቻሉ፣ የየዕለቱን የማህሌት፣ የቅዳሴ እና የትምህርተ ወንጌል መርሃ ግብር በደብረ ሰላም ቅድስት ማርያም ኦፊሴላዊ የዩቲዩብ እና ፌስቡክ ገጾች ይከታተሉ።' : 'Follow all daily Mahlet vigils, Divine Liturgies, and sermons broadcast live from our church in Washington, D.C.'">
       </p>
       
       <div class="mt-8 flex flex-wrap justify-center gap-4">
-        <a href="https://youtube.com" target="_blank" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg flex items-center gap-2 text-sm">
+        <a href="https://www.youtube.com/@DSKMariamDC" target="_blank" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg flex items-center gap-2 text-sm">
           <i data-lucide="play-circle" class="w-5 h-5"></i> 
-          <span x-text="lang === 'am' ? 'በዩቲዩብ ይመልከቱ (YouTube)' : 'Watch on YouTube Live'"></span>
+          <span x-text="lang === 'am' ? 'የደብረ ሰላም ዩቲዩብ (YouTube)' : 'DSK Mariam YouTube'"></span>
         </a>
-        <a href="https://facebook.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg flex items-center gap-2 text-sm">
+        <a href="https://www.facebook.com/dskmariamdc" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg flex items-center gap-2 text-sm">
           <i data-lucide="facebook" class="w-5 h-5"></i> 
-          <span x-text="lang === 'am' ? 'በፌስቡክ ይመልከቱ (Facebook)' : 'Facebook Live'"></span>
+          <span x-text="lang === 'am' ? 'የደብረ ሰላም ፌስቡክ (Facebook)' : 'DSK Mariam Facebook'"></span>
         </a>
       </div>
     </div>
@@ -410,29 +264,47 @@
   <footer id="contact" class="bg-slate-950 text-slate-400 py-12 px-4 sm:px-6 border-t border-slate-800">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
       <div>
-        <h3 class="text-white font-bold text-base mb-3" x-text="lang === 'am' ? 'የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን' : 'Ethiopian Orthodox Tewahedo Church'"></h3>
-        <p class="text-xs leading-relaxed text-slate-400" x-text="lang === 'am' ? 'የሐዋርያትን እምነት እና ሥርዓት ጠብቃ ለምእመናን መንፈሳዊ አገልግሎት እና ትምህርት የምትሰጥ ቤተ ክርስቲያን።' : 'Dedicated to preserving Apostolic traditions, ancient liturgical chanting, and spiritual growth through the intercession of Holy Mother Mary.'">
+        <h3 class="text-white font-bold text-base mb-3" x-text="lang === 'am' ? 'ደብረ ሰላም ቅድስት ማርያም ቤተ ክርስቲያን' : 'Debre Selam Kidus Mariam Church'"></h3>
+        <p class="text-xs leading-relaxed text-slate-400" x-text="lang === 'am' ? 'የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያንን እምነትና ሥርዓት ጠብቆ ለምእመናን መንፈሳዊ አገልግሎት የሚሰጥ በዋሽንግተን ዲሲ የሚገኝ የተቀደሰ ስፍራ።' : 'Debre Selam Kidus Mariam Ethiopian Orthodox Tewahedo Church in Washington, D.C. provides religious services, sacraments, and spiritual education to the community.'">
         </p>
       </div>
+
+      <!-- Scraped Exact Address & Contact Details -->
       <div>
-        <h3 class="text-white font-bold text-base mb-3" x-text="lang === 'am' ? 'የቤተ ክርስቲያኑ አድራሻ' : 'Parish Location'"></h3>
-        <p class="text-xs text-slate-400 flex items-start gap-2">
+        <h3 class="text-white font-bold text-base mb-3" x-text="lang === 'am' ? 'የቤተ ክርስቲያኑ አድራሻ' : 'Parish Address & Phone'"></h3>
+        <p class="text-xs text-slate-300 flex items-start gap-2">
           <i data-lucide="map-pin" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
-          <span>123 Holy Church Way, City, State 12345</span>
+          <span>
+            <strong>Debre Selam Kidus Mariam Church</strong><br />
+            1350 Buchanan St NW,<br />
+            Washington, DC 20011
+          </span>
         </p>
-        <p class="text-xs text-slate-400 flex items-center gap-2 mt-2">
+        <p class="text-xs text-slate-300 flex items-center gap-2 mt-3">
           <i data-lucide="phone" class="w-4 h-4 text-amber-400 shrink-0"></i>
-          <span>(555) 123-4567</span>
+          <span>(202) 882-1205</span>
         </p>
+        <p class="text-xs text-slate-300 flex items-center gap-2 mt-1">
+          <i data-lucide="globe" class="w-4 h-4 text-amber-400 shrink-0"></i>
+          <a href="https://dskmariamdc.org" target="_blank" class="text-amber-400 hover:underline">dskmariamdc.org</a>
+        </p>
+        <div class="mt-3">
+          <a href="https://maps.google.com/?q=1350+Buchanan+St+NW,+Washington,+DC+20011" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-amber-300 bg-slate-900 border border-amber-500/40 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition">
+            <i data-lucide="navigation" class="w-3.5 h-3.5 text-amber-400"></i>
+            <span x-text="lang === 'am' ? 'በጉግል ካርታ አቅጣጫ ይመልከቱ' : 'Get Directions on Google Maps'"></span>
+          </a>
+        </div>
       </div>
+
       <div>
-        <h3 class="text-white font-bold text-base mb-3" x-text="lang === 'am' ? 'የንሥሐ አባቶች አገልግሎት' : 'Spiritual Confession'"></h3>
-        <p class="text-xs text-slate-400" x-text="lang === 'am' ? 'በየዕለቱ ከቅዳሴ በኋላ የካህናት አባቶቻችን የንሥሐ እና የመንፈሳዊ ምክር አገልግሎት ይሰጣሉ።' : 'Priests are available daily following Kidasse services for Holy Confession and spiritual guidance.'">
+        <h3 class="text-white font-bold text-base mb-3" x-text="lang === 'am' ? 'የንሥሐ አባቶች አገልግሎት' : 'Spiritual Confession & Hours'"></h3>
+        <p class="text-xs text-slate-400" x-text="lang === 'am' ? 'በየዕለቱ ከቅዳሴ በኋላ የካህናት አባቶቻችን የንሥሐ፣ የመንፈሳዊ ምክር እና የጸሎት አገልግሎት ይሰጣሉ።' : 'Clergy members are available daily following Divine Liturgy services for Holy Confession, spiritual counseling, and prayer requests.'">
         </p>
       </div>
     </div>
+
     <div class="mt-12 pt-6 border-t border-slate-800/80 text-center text-xs text-slate-500">
-      © 2026 Ethiopian Orthodox Tewahedo Church. All Rights Reserved. ጾመ ፍልሰታ ፪፯፻፲፰ ዓ.ም
+      © 2026 Debre Selam Kidus Mariam Ethiopian Orthodox Tewahedo Church (Washington, D.C.). ጾመ ፍልሰታ ፪፯፻፲፰ ዓ.ም
     </div>
   </footer>
 
