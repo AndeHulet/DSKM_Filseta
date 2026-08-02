@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="am" class="scroll-smooth" x-data="{ lang: 'am', activeTab: 'all' }">
+<html lang="am" class="scroll-smooth h-full select-none" x-data="{ lang: 'am', activeTab: 'all', mobileMenuOpen: false }">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ደብረ ሰላም ቅድስት ማርያም ኢ/ኦ/ተ/ቤተ ክርስቲያን | Debre Selam Kidist Mariam EOTC DC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0F172A" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="ቅድስት ማርያም" />
+  <title>ደብረ ሰላም ቅድስት ማርያም | DSK Mariam EOTC DC</title>
   
+  <!-- Inline Data URI Favicon (No External Files Required) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230F172A'/><circle cx='50' cy='50' r='40' fill='%23D4AF37'/><text x='50' y='65' font-size='45' text-anchor='middle' fill='%230F172A' font-family='serif'>✝</text></svg>" />
+  
+  <!-- Apple Touch Icon for iOS Home Screen (Fixes missing icon issue) -->
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230F172A'/><circle cx='50' cy='50' r='40' fill='%23D4AF37'/><text x='50' y='65' font-size='45' text-anchor='middle' fill='%230F172A' font-family='serif'>✝</text></svg>" />
+  <link rel="apple-touch-icon-precomposed" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230F172A'/><circle cx='50' cy='50' r='40' fill='%23D4AF37'/><text x='50' y='65' font-size='45' text-anchor='middle' fill='%230F172A' font-family='serif'>✝</text></svg>" />
+
+  <!-- Web App Manifest for Android Chrome Home Screen Shortcut -->
+  <link rel="manifest" href='data:application/manifest+json,{"name":"ደብረ ሰላም ቅድስት ማርያም","short_name":"ቅድስት ማርያም","start_url":"/","display":"standalone","background_color":"#0F172A","theme_color":"#0F172A","icons":[{"src":"data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%230F172A\"/><circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"%23D4AF37\"/><text x=\"50\" y=\"65\" font-size=\"45\" text-anchor=\"middle\" fill=\"%230F172A\" font-family=\"serif\">✝</text></svg>","sizes":"192x192","type":"image/svg+xml"}]}' />
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -29,283 +43,312 @@
     }
   </script>
   
-  <!-- Alpine.js for Interactivity & Language State -->
+  <!-- Alpine.js -->
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    body {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-amber-200 selection:text-amber-900">
+<body class="bg-slate-900 text-slate-800 font-sans antialiased pb-20 md:pb-0">
 
   <!-- Top Announcement Bar -->
-  <div class="bg-amber-600 text-slate-950 font-bold text-xs py-2 px-4 text-center border-b border-amber-700/30 flex items-center justify-center gap-2">
+  <div class="bg-amber-500 text-slate-950 font-bold text-xs py-2 px-3 text-center flex items-center justify-center gap-1.5 shadow-sm">
     <span>✝</span>
-    <span x-text="lang === 'am' ? 'ደብረ ሰላም ቅድስት ማርያም ኢ/ኦ/ተ/ቤተ ክርስቲያን ዋሽንግተን ዲሲ - የጾመ ፍልሰታ ልዩ ሱባኤ' : 'Debre Selam Kidist Mariam EOTC Washington DC - Filseta Special Fasting Season'"></span>
+    <span class="truncate" x-text="lang === 'am' ? 'ደብረ ሰላም ቅድስት ማርያም (ዲሲ) - የጾመ ፍልሰታ ልዩ ሱባኤ' : 'DSK Mariam DC - Filseta Special Fasting Season'"></span>
     <span>✝</span>
   </div>
 
-  <!-- Header / Navigation -->
-  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-amber-600/30 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+  <!-- Mobile-Optimized Header -->
+  <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white px-4 py-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
       
-      <!-- Brand / Logo -->
-      <a href="#" class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-600 to-yellow-400 flex items-center justify-center text-slate-900 font-black text-2xl shadow-lg border-2 border-amber-300">
+      <!-- Brand Logo using Inline Vector Emblem -->
+      <a href="#" class="flex items-center gap-2.5 active:scale-95 transition">
+        <div class="w-9 h-9 rounded-full bg-slate-950 border-2 border-amber-400 shadow-md flex items-center justify-center text-amber-400 font-serif text-lg leading-none">
           ✝
         </div>
         <div>
-          <h1 class="text-base sm:text-lg font-bold leading-tight text-amber-400" x-text="lang === 'am' ? 'ደብረ ሰላም ቅድስት ማርያም' : 'Debre Selam Kidist Mariam'"></h1>
-          <p class="text-xs text-slate-300 tracking-wider uppercase font-medium" x-text="lang === 'am' ? 'የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን (ዋሽንግተን ዲሲ)' : 'Ethiopian Orthodox Tewahedo Church (DC)'"></p>
+          <h1 class="text-sm font-bold leading-tight text-amber-400" x-text="lang === 'am' ? 'ደብረ ሰላም ቅድስት ማርያም' : 'Debre Selam Kidist Mariam'"></h1>
+          <p class="text-[10px] text-slate-400 font-medium tracking-tight" x-text="lang === 'am' ? 'ኢ/ኦ/ተ/ቤተ ክርስቲያን (ዋሽንግተን ዲሲ)' : 'EOTC Washington DC'"></p>
         </div>
       </a>
 
-      <!-- Navigation & Language Switcher -->
-      <div class="flex items-center gap-3 sm:gap-6">
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+      <!-- Header Actions -->
+      <div class="flex items-center gap-2">
+        <button 
+          @click="lang = (lang === 'am' ? 'en' : 'am')" 
+          class="bg-slate-800 active:bg-slate-700 border border-amber-500/40 text-amber-300 px-2.5 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1 shadow-sm">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span x-text="lang === 'am' ? 'EN' : 'አማ'"></span>
+        </button>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium ml-4">
           <a href="#about" class="hover:text-amber-400 transition" x-text="lang === 'am' ? 'ስለ ቤተ ክርስቲያኑ' : 'About'"></a>
           <a href="#schedule" class="hover:text-amber-400 transition" x-text="lang === 'am' ? 'የሱባኤ መርሃ ግብር' : 'Fast Schedule'"></a>
           <a href="#livestream" class="hover:text-amber-400 transition" x-text="lang === 'am' ? 'ቀጥታ ስርጭት' : 'Live Stream'"></a>
-          <a href="#contact" class="hover:text-amber-400 transition" x-text="lang === 'am' ? 'አድራሻ' : 'Contact & Map'"></a>
+          <a href="/calendar/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition flex items-center gap-1">
+            <span x-text="lang === 'am' ? 'የዘመን አቆጣጠር' : 'Calendar'"></span>
+            <i data-lucide="external-link" class="w-3 h-3 text-amber-400"></i>
+          </a>
+          <a href="#contact" class="hover:text-amber-400 transition" x-text="lang === 'am' ? 'አድራሻ' : 'Contact'"></a>
         </nav>
 
-        <!-- Language Toggle Button -->
-        <button 
-          @click="lang = (lang === 'am' ? 'en' : 'am')" 
-          class="bg-slate-800 hover:bg-slate-700 border border-amber-500/50 text-amber-300 px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-          <i data-lucide="globe" class="w-4 h-4 text-amber-400"></i>
-          <span x-text="lang === 'am' ? 'English' : 'አማርኛ'"></span>
+        <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-slate-300 hover:text-amber-400 focus:outline-none">
+          <i data-lucide="menu" x-show="!mobileMenuOpen" class="w-6 h-6"></i>
+          <i data-lucide="x" x-show="mobileMenuOpen" class="w-6 h-6" style="display:none;"></i>
         </button>
-
-        <a href="#livestream" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold px-3.5 py-1.5 rounded-lg text-xs sm:text-sm transition shadow-md flex items-center gap-1.5">
-          <i data-lucide="tv" class="w-4 h-4"></i>
-          <span x-text="lang === 'am' ? 'ቀጥታ ስርጭት' : 'Live Stream'"></span>
-        </a>
       </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div x-show="mobileMenuOpen" 
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0 -translate-y-4"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-150"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-4"
+         class="md:hidden bg-slate-900 border-b border-amber-500/20 px-4 py-4 space-y-3 mt-2" style="display:none;">
+      <a @click="mobileMenuOpen = false" href="#about" class="block text-slate-200 font-medium hover:text-amber-400 py-1.5 border-b border-slate-800 text-sm" x-text="lang === 'am' ? 'ስለ ቤተ ክርስቲያኑ' : 'About'"></a>
+      <a @click="mobileMenuOpen = false" href="#schedule" class="block text-slate-200 font-medium hover:text-amber-400 py-1.5 border-b border-slate-800 text-sm" x-text="lang === 'am' ? 'የሱባኤ መርሃ ግብር' : 'Fast Schedule'"></a>
+      <a @click="mobileMenuOpen = false" href="#livestream" class="block text-slate-200 font-medium hover:text-amber-400 py-1.5 border-b border-slate-800 text-sm" x-text="lang === 'am' ? 'ቀጥታ ስርጭት' : 'Live Stream'"></a>
+      <a href="/calendar/" target="_blank" rel="noopener noreferrer" class="block text-slate-200 font-medium hover:text-amber-400 py-1.5 border-b border-slate-800 text-sm flex items-center justify-between">
+        <span x-text="lang === 'am' ? 'የኢትዮጵያ ዘመን አቆጣጠር' : 'Ethiopian Calendar'"></span>
+        <i data-lucide="external-link" class="w-4 h-4 text-amber-400"></i>
+      </a>
+      <a href="https://ibm41124-hue.github.io/" target="_blank" rel="noopener noreferrer" class="block text-slate-200 font-medium hover:text-amber-400 py-1.5 border-b border-slate-800 text-sm flex items-center justify-between">
+        <span x-text="lang === 'am' ? 'ባሕረ ሐሳብ' : 'Bahre Hasab'"></span>
+        <i data-lucide="code" class="w-4 h-4 text-amber-400"></i>
+      </a>
+      <a @click="mobileMenuOpen = false" href="#contact" class="block text-slate-200 font-medium hover:text-amber-400 py-1.5 text-sm" x-text="lang === 'am' ? 'አድራሻ' : 'Contact'"></a>
     </div>
   </header>
 
   <!-- Hero Banner -->
-  <section class="relative bg-slate-900 text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden border-b-4 border-amber-500">
-    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px]"></div>
-    
-    <div class="max-w-5xl mx-auto text-center relative z-10">
-      <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs sm:text-sm font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
-        <span>✨ <span x-text="lang === 'am' ? 'የ16 ቀናት የሱባኤ እና የጸሎት ወቅት' : '16-Day Sacred Subae Season'"></span></span>
+  <section class="relative bg-slate-900 text-white pt-8 pb-12 px-4 sm:px-6 border-b border-amber-500/30 overflow-hidden">
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      
+      <div class="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+        <span>✨ <span x-text="lang === 'am' ? 'የ16 ቀናት የሱባኤ ወቅት' : '16-Day Subae'"></span></span>
         <span>•</span>
-        <span class="font-bold text-amber-400" x-text="lang === 'am' ? 'ነሐሴ ፩ - ነሐሴ ፲፮' : 'August 7 – August 22'"></span>
+        <span class="font-bold text-amber-400" x-text="lang === 'am' ? 'ነሐሴ ፩ - ፲፮' : 'Aug 7 – Aug 22'"></span>
       </div>
       
-      <h1 class="text-4xl sm:text-6xl font-serif font-bold text-amber-400 tracking-tight leading-tight" x-text="lang === 'am' ? 'ጾመ ፍልሰታ ለማርያም በደብረ ሰላም' : 'The Fast of Assumption at DSK Mariam'">
+      <h1 class="text-3xl sm:text-5xl font-serif font-bold text-amber-400 tracking-tight leading-tight" x-text="lang === 'am' ? 'ጾመ ፍልሰታ ለማርያም' : 'The Fast of Assumption'">
       </h1>
       
-      <p class="text-xl sm:text-2xl text-slate-200 mt-4 font-serif italic">
+      <p class="text-lg text-slate-200 mt-2 font-serif italic">
         <span x-text="lang === 'am' ? '«ትውልድ ሁሉ ብፅዕት ይሉኛል።»' : '\'All generations shall call me blessed.\''"></span>
-        <span class="text-amber-400 font-sans not-italic text-base" x-text="lang === 'am' ? '— የሉቃስ ወንጌል ፩:፵፰' : '— Luke 1:48'"></span>
       </p>
+      <p class="text-amber-400 font-sans not-italic text-xs mt-0.5" x-text="lang === 'am' ? '— የሉቃስ ወንጌል ፩:፵፰' : '— Luke 1:48'"></p>
 
-      <p class="mt-6 text-slate-300 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed" x-text="lang === 'am' ? 'በዋሽንግተን ዲሲ የደብረ ሰላም ቅድስት ማርያም ኢ/ኦ/ተ ቤተ ክርስቲያን ምእመናን ከነሐሴ ፩ እስከ ነሐሴ ፲፮ በሚካሄደው የ16 ቀን የሱባኤ፣ የሌሊት ሰዓታት፣ የዕለታዊ ቅዳሴ እና የትምህርተ ወንጌል መርሃ ግብር ላይ በመገኘት የእመቤታችንን በረከት እንድትቀበሉ ጥሪ ያቀርባል።' : 'Join the Debre Selam Kidist Mariam parish in Washington, D.C. from August 7 to August 22 for 16 days of intensive prayer, Seatat, daily Kidasse, and spiritual lectures.'">
-      </p>
-
-      <!-- Key Service Timings -->
-      <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-5xl mx-auto text-left sm:text-center">
-        <!-- Seatat Card -->
-        <div class="bg-slate-800/80 border border-slate-700 p-4 rounded-xl backdrop-blur">
-          <i data-lucide="moon" class="w-6 h-6 text-amber-400 sm:mx-auto mb-2"></i>
-          <h2 class="font-bold text-slate-100 text-sm sm:text-base border-b border-slate-700/60 pb-1 mb-2" x-text="lang === 'am' ? 'ሰዓታት' : 'Seatat (Hours)'"></h2>
+      <div class="mt-8 flex md:grid md:grid-cols-3 gap-3 overflow-x-auto md:overflow-visible no-scrollbar pb-2 snap-x snap-mandatory text-left">
+        <div class="snap-center shrink-0 md:shrink w-[80%] md:w-full bg-slate-800/90 border border-slate-700/80 p-4 rounded-2xl backdrop-blur">
+          <div class="flex items-center gap-2 mb-2">
+            <i data-lucide="moon" class="w-5 h-5 text-amber-400"></i>
+            <h2 class="font-bold text-slate-100 text-sm" x-text="lang === 'am' ? 'ሰዓታት' : 'Seatat'"></h2>
+          </div>
           <div class="text-xs text-amber-300 space-y-1">
-            <p><span class="text-slate-300" x-text="lang === 'am' ? 'ከሰኞ እስከ ቅዳሜ:' : 'Mon – Sat:'"></span> 1:00 AM - 6:00 AM</p>
-            <p><span class="text-slate-300" x-text="lang === 'am' ? 'እሁድ:' : 'Sunday:'"></span> 12:00 AM - 6:00 AM</p>
+            <p><span class="text-slate-400" x-text="lang === 'am' ? 'ከሰኞ - ቅዳሜ:' : 'Mon – Sat:'"></span> 1:00 AM - 6:00 AM</p>
+            <p><span class="text-slate-400" x-text="lang === 'am' ? 'እሁድ:' : 'Sunday:'"></span> 12:00 AM - 6:00 AM</p>
           </div>
         </div>
 
-        <!-- Kidan Card -->
-        <div class="bg-slate-800/80 border border-slate-700 p-4 rounded-xl backdrop-blur">
-          <i data-lucide="book-open" class="w-6 h-6 text-amber-400 sm:mx-auto mb-2"></i>
-          <h2 class="font-bold text-slate-100 text-sm sm:text-base border-b border-slate-700/60 pb-1 mb-2" x-text="lang === 'am' ? 'ኪዳን' : 'Kidan'"></h2>
+        <div class="snap-center shrink-0 md:shrink w-[80%] md:w-full bg-slate-800/90 border border-slate-700/80 p-4 rounded-2xl backdrop-blur">
+          <div class="flex items-center gap-2 mb-2">
+            <i data-lucide="book-open" class="w-5 h-5 text-amber-400"></i>
+            <h2 class="font-bold text-slate-100 text-sm" x-text="lang === 'am' ? 'ኪዳን' : 'Kidan'"></h2>
+          </div>
           <div class="text-xs text-amber-300 space-y-1">
-            <p><span class="text-slate-300" x-text="lang === 'am' ? 'ከሰኞ እስከ ዓርብ:' : 'Mon – Fri:'"></span> 6:00 AM - 8:00 AM</p>
+            <p><span class="text-slate-400" x-text="lang === 'am' ? 'ከሰኞ - ዓርብ:' : 'Mon – Fri:'"></span> 6:00 AM - 8:00 AM</p>
           </div>
         </div>
 
-        <!-- Kidasse Card -->
-        <div class="bg-slate-800/80 border border-slate-700 p-4 rounded-xl backdrop-blur">
-          <i data-lucide="sun" class="w-6 h-6 text-amber-400 sm:mx-auto mb-2"></i>
-          <h2 class="font-bold text-slate-100 text-sm sm:text-base border-b border-slate-700/60 pb-1 mb-2" x-text="lang === 'am' ? 'ቅዳሴ' : 'Kidasse (Liturgy)'"></h2>
+        <div class="snap-center shrink-0 md:shrink w-[80%] md:w-full bg-slate-800/90 border border-slate-700/80 p-4 rounded-2xl backdrop-blur">
+          <div class="flex items-center gap-2 mb-2">
+            <i data-lucide="sun" class="w-5 h-5 text-amber-400"></i>
+            <h2 class="font-bold text-slate-100 text-sm" x-text="lang === 'am' ? 'ቅዳሴ' : 'Kidasse'"></h2>
+          </div>
           <div class="text-xs text-amber-300 space-y-1">
-            <p><span class="text-slate-300" x-text="lang === 'am' ? 'ከሰኞ እስከ ዓርብ:' : 'Mon – Fri:'"></span> 12:00 PM - 3:00 PM</p>
-            <p><span class="text-slate-300" x-text="lang === 'am' ? 'ቅዳሜ:' : 'Saturday:'"></span> 6:00 AM - 10:00 AM</p>
-            <p><span class="text-slate-300" x-text="lang === 'am' ? 'እሁድ:' : 'Sunday:'"></span> 6:00 AM - 11:00 AM</p>
+            <p><span class="text-slate-400" x-text="lang === 'am' ? 'ከሰኞ - ዓርብ:' : 'Mon – Fri:'"></span> 12:00 PM - 3:00 PM</p>
+            <p><span class="text-slate-400" x-text="lang === 'am' ? 'እሁድ:' : 'Sunday:'"></span> 6:00 AM - 11:00 AM</p>
           </div>
         </div>
       </div>
+      <p class="text-[11px] text-slate-400 mt-2 italic text-center md:hidden" x-text="lang === 'am' ? '‹‹ ወደ ጎን ያንሸራቱ ››' : '‹‹ Swipe sideways to view all ››'"></p>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-16 max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-sm">
-      <div class="lg:col-span-7 space-y-4">
-        <span class="text-amber-600 font-bold text-sm tracking-wider uppercase" x-text="lang === 'am' ? 'ደብረ ሰላም ቅድስት ማርያም ቤተ ክርስቲያን' : 'DSK Mariam Church Washington DC'"></span>
-        <h2 class="text-3xl font-serif font-bold text-slate-900" x-text="lang === 'am' ? 'ስለ ቤተ ክርስቲያናችን እና ስለ ጾመ ፍልሰታ' : 'About Our Parish & Tsome Filseta'"></h2>
-        <p class="text-slate-600 leading-relaxed text-sm sm:text-base" x-text="lang === 'am' ? 'በዋሽንግተን ዲሲ የሚገኘው የደብረ ሰላም ቅድስት ማርያም ኢ/ኦ/ተ ቤተ ክርስቲያን የሐዋርያትን እምነት፣ ሥርዓት እና ትውፊት ጠብቆ በዲሲ እና በአካባቢው ለሚገኘው ምእመን መንፈሳዊ አገልግሎት በመስጠት ላይ ይገኛል።' : 'Debre Selam Kidist Mariam Ethiopian Orthodox Tewahedo Church serves as a spiritual sanctuary for Orthodox Christians in Washington, D.C. and the surrounding Greater Metropolitan Area.'">
-        </p>
-        <p class="text-slate-600 leading-relaxed text-sm sm:text-base" x-text="lang === 'am' ? 'ጾመ ፍልሰታ የእመቤታችን ቅድስት ድንግል ማርያም የዕርገት በዓል ዝግጅት ሲሆን፣ በነዚህ 16 ቀናት ምእመናን በጾም፣ በጸሎት፣ በስግደት እና በቅዱስ ቁርባን በረከትን ይቀበላሉ።' : 'During Tsome Filseta (Fast of the Assumption), believers observe 16 days of prostration, fasting, and Holy Communion in commemoration of St. Mary\'s bodily assumption into heaven.'">
-        </p>
-      </div>
-      <div class="lg:col-span-5 flex justify-center">
-        <div class="relative rounded-2xl overflow-hidden border-4 border-amber-500/20 shadow-xl w-full">
-          <img src="https://twt-thumbs.washtimes.com/media/image/2025/04/16/Ethiopian_Church_Washington_DC_14414_c0-301-6104-3859_s1770x1032.jpg?a9c72e651e7d5e7f61d34f9c055f4268b0dc5e8b" alt="Debre Selam Kidist Mariam Church Liturgy" class="w-full h-80 object-cover" />
-          <div class="bg-slate-900 text-slate-200 text-xs p-3 text-center border-t border-slate-800" x-text="lang === 'am' ? 'የደብረ ሰላም ቅድስት ማርያም ቤተ ክርስቲያን የቅዳሴ አገልግሎት (ዋሽንግተን ዲሲ)' : 'Divine Liturgy at Debre Selam Kidist Mariam Church (Washington, DC)'">
+  <!-- Content Body Container -->
+  <main class="bg-slate-50 min-h-screen text-slate-800 rounded-t-3xl -mt-4 relative z-20 pt-6 pb-12 px-4 sm:px-6">
+
+    <section class="max-w-4xl mx-auto mb-8">
+      <a href="/calendar/" target="_blank" rel="noopener noreferrer" 
+         class="flex items-center justify-between bg-amber-500/10 border border-amber-500/30 hover:border-amber-400 p-4 rounded-2xl transition group shadow-sm">
+        <div class="flex items-center gap-3">
+          <div class="bg-amber-500/20 p-3 rounded-xl text-amber-600 group-hover:scale-105 transition">
+            <i data-lucide="calendar-days" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-sm group-hover:text-amber-600 transition" x-text="lang === 'am' ? 'የኢትዮጵያ ዘመን አቆጣጠር / የቀን መለወጫ' : 'Ethiopian Calendar & Date Converter'"></h4>
+            <p class="text-xs text-slate-500" x-text="lang === 'am' ? 'የግዕዝ እና የጎርጎሪዮስ አቆጣጠርን ለማየት እዚህ ይጫኑ' : 'Convert and view Ethiopian and Gregorian calendar dates'"></p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+        <i data-lucide="external-link" class="w-5 h-5 text-slate-400 group-hover:text-amber-600 transition shrink-0"></i>
+      </a>
+    </section>
 
-  <!-- Daily Program Schedule Section -->
-  <section id="schedule" class="py-12 max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="text-center mb-10">
-      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-900" x-text="lang === 'am' ? 'የሱባኤ ዕለታዊ መርሃ ግብር' : 'Daily Subae Fasting Schedule'"></h2>
-      <p class="text-slate-600 mt-2" x-text="lang === 'am' ? 'ከነሐሴ ፩ እስከ ነሐሴ ፲፮ (August 7 – August 22)' : 'August 7 – August 22 (ነሐሴ ፩ – ነሐሴ ፲፮)'"></p>
-
-      <!-- Filter Buttons -->
-      <div class="mt-6 flex flex-wrap justify-center gap-2">
-        <button @click="activeTab = 'all'" :class="activeTab === 'all' ? 'bg-amber-600 text-white' : 'bg-white text-slate-700 border border-slate-300'" class="px-4 py-2 rounded-lg text-xs font-bold transition" x-text="lang === 'am' ? 'ሁሉም 16 ቀናት' : 'All Days (16)'"></button>
-        <button @click="activeTab = 'weekdays'" :class="activeTab === 'weekdays' ? 'bg-amber-600 text-white' : 'bg-white text-slate-700 border border-slate-300'" class="px-4 py-2 rounded-lg text-xs font-bold transition" x-text="lang === 'am' ? 'የሳምንት ቀናት' : 'Weekdays'"></button>
-        <button @click="activeTab = 'weekends'" :class="activeTab === 'weekends' ? 'bg-amber-600 text-white' : 'bg-white text-slate-700 border border-slate-300'" class="px-4 py-2 rounded-lg text-xs font-bold transition" x-text="lang === 'am' ? 'እሁድ እና በዓላት' : 'Sundays & Feasts'"></button>
-      </div>
-    </div>
-
-    <!-- Dynamic Schedule Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- Weekday Card -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-500 transition">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ከሰኞ እስከ ዓርብ' : 'Mon - Fri'"></span>
-          <span class="text-xs text-slate-400 font-medium" x-text="lang === 'am' ? 'የሳምንቱ ቀናት' : 'Weekdays'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'የሱባኤ ዕለታዊ መርሃ ግብር' : 'Weekday Subae Schedule'"></h3>
-        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-600 space-y-2">
-          <div><strong class="text-slate-800" x-text="lang === 'am' ? 'ሰዓታት:' : 'Seatat:'"></strong> 1:00 AM - 6:00 AM</div>
-          <div><strong class="text-slate-800" x-text="lang === 'am' ? 'ኪዳን:' : 'Kidan:'"></strong> 6:00 AM - 8:00 AM</div>
-          <div><strong class="text-slate-800" x-text="lang === 'am' ? 'ቅዳሴ:' : 'Kidasse:'"></strong> 12:00 PM - 3:00 PM</div>
-        </div>
-      </div>
-
-      <!-- Saturday Card -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-amber-500 transition">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ቅዳሜ' : 'Saturday'"></span>
-          <span class="text-xs text-slate-400 font-medium" x-text="lang === 'am' ? 'የቅዳሜ መርሃ ግብር' : 'Saturday Schedule'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'የቅዳሜ የሱባኤ መርሃ ግብር' : 'Saturday Service'"></h3>
-        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-600 space-y-2">
-          <div><strong class="text-slate-800" x-text="lang === 'am' ? 'ሰዓታት:' : 'Seatat:'"></strong> 1:00 AM - 6:00 AM</div>
-          <div><strong class="text-slate-800" x-text="lang === 'am' ? 'ኪዳን:' : 'Kidan:'"></strong> <span x-text="lang === 'am' ? 'ከሰዓታት በኋላ' : 'Following Seatat'"></span></div>
-          <div><strong class="text-slate-800" x-text="lang === 'am' ? 'ቅዳሴ:' : 'Kidasse:'"></strong> 6:00 AM - 10:00 AM</div>
-        </div>
-      </div>
-
-      <!-- Sunday Card -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekends'" class="bg-amber-50 border border-amber-300 rounded-xl p-5 shadow-sm">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-amber-600 text-white text-xs font-bold px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'እሁድ' : 'Sunday'"></span>
-          <span class="text-xs text-amber-800 font-bold" x-text="lang === 'am' ? 'የእሁድ መርሃ ግብር' : 'Sunday Service'"></span>
-        </div>
-        <h3 class="font-bold text-slate-900 text-base" x-text="lang === 'am' ? 'የእሁድ ሰንበት ቅዳሴ' : 'Sunday Liturgy & Seatat'"></h3>
-        <div class="mt-4 pt-3 border-t border-amber-200 text-xs text-slate-700 space-y-2">
-          <div><strong class="text-amber-950" x-text="lang === 'am' ? 'ሰዓታት:' : 'Seatat:'"></strong> 12:00 AM - 6:00 AM</div>
-          <div><strong class="text-amber-950" x-text="lang === 'am' ? 'ኪዳን:' : 'Kidan:'"></strong> <span x-text="lang === 'am' ? 'ከሰዓታት በኋላ' : 'Following Seatat'"></span></div>
-          <div><strong class="text-amber-950" x-text="lang === 'am' ? 'ቅዳሴ:' : 'Kidasse:'"></strong> 6:00 AM - 11:00 AM</div>
-        </div>
-      </div>
-
-      <!-- Day 16 (Great Feast) -->
-      <div x-show="activeTab === 'all' || activeTab === 'weekends'" class="bg-gradient-to-br from-amber-600 to-amber-800 text-white rounded-xl p-5 shadow-xl md:col-span-2 lg:col-span-3">
-        <div class="flex justify-between items-center mb-3">
-          <span class="bg-white text-amber-900 font-extrabold text-xs px-2.5 py-1 rounded-md" x-text="lang === 'am' ? 'ነሐሴ ፲፮' : 'Aug 22'"></span>
-          <span class="text-xs text-amber-100 font-extrabold uppercase tracking-wide" x-text="lang === 'am' ? 'ታላቁ በዓል!' : 'Great Feast Day!'"></span>
-        </div>
-        <h3 class="font-extrabold text-white text-lg" x-text="lang === 'am' ? 'የእመቤታችን የዕርገት በዓል (ዕርገታ ለማርያም)' : 'Ascension of St. Mary (ዕርገታ ለማርያም)'"></h3>
-        <p class="text-xs text-amber-100 mt-1" x-text="lang === 'am' ? 'የእመቤታችን ቅድስት ድንግል ማርያም የትንስኤዋ እና የዕርገቷ በዓል በደብረ ሰላም!' : 'The bodily Assumption & Ascension of St. Mary at DSK Mariam.'"></p>
-        <div class="mt-4 pt-3 border-t border-amber-500/50 text-xs text-amber-100">
-          <div><strong x-text="lang === 'am' ? 'ቅዳሴ:' : 'Kidasse:'"></strong> 3:00 AM – 11:00 AM</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Live Stream Banner -->
-  <section id="livestream" class="bg-slate-900 text-white py-16 px-4 sm:px-6">
-    <div class="max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-amber-900/40 via-slate-800 to-slate-900 border border-amber-500/30 p-8 sm:p-12 text-center relative overflow-hidden">
-      <i data-lucide="youtube" class="w-16 h-16 text-red-500 mx-auto mb-4"></i>
-      <h2 class="text-3xl font-serif font-bold text-amber-400" x-text="lang === 'am' ? 'በደብረ ሰላም ቅድስት ማርያም ቀጥታ ስርጭት ይከታተሉ' : 'Watch DSK Mariam Live Streams'"></h2>
-      <p class="text-slate-300 mt-3 max-w-2xl mx-auto text-sm sm:text-base" x-text="lang === 'am' ? 'በአካል መገኘት ካልቻሉ፣ የየዕለቱን የሰዓታት፣ የቅዳሴ እና የትምህርተ ወንጌል መርሃ ግብር በደብረ ሰላም ቅድስት ማርያም ኦፊሴላዊ የዩቲዩብ እና ፌስቡክ ገጾች ይከታተሉ።' : 'Follow all daily Seatat vigils, Divine Liturgies, and sermons broadcast live from our church in Washington, D.C.'">
-      </p>
-      
-      <div class="mt-8 flex flex-wrap justify-center gap-4">
-        <!-- YouTube Link -->
-        <a href="https://www.youtube.com/@dskmeotc21" target="_blank" rel="noopener noreferrer" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg flex items-center gap-2 text-sm">
-          <i data-lucide="play-circle" class="w-5 h-5"></i> 
-          <span x-text="lang === 'am' ? 'የደብረ ሰላም ዩቲዩብ (YouTube)' : 'DSK Mariam YouTube'"></span>
-        </a>
-        <!-- Facebook Link -->
-        <a href="https://www.facebook.com/dskmariam/" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg flex items-center gap-2 text-sm">
-          <i data-lucide="facebook" class="w-5 h-5"></i> 
-          <span x-text="lang === 'am' ? 'የደብረ ሰላም ፌስቡክ (Facebook)' : 'DSK Mariam Facebook'"></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Location Footer -->
-  <footer id="contact" class="bg-slate-950 text-slate-400 py-12 px-4 sm:px-6 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
-        <h3 class="text-white font-bold text-base mb-3" x-text="lang === 'am' ? 'ደብረ ሰላም ቅድስት ማርያም ቤተ ክርስቲያን' : 'Debre Selam Kidist Mariam Church'"></h3>
-        <p class="text-xs leading-relaxed text-slate-400" x-text="lang === 'am' ? 'የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያንን እምነትና ሥርዓት ጠብቆ ለምእመናን መንፈሳዊ አገልግሎት የሚሰጥ በዋሽንግተን ዲሲ የሚገኝ የተቀደሰ ስፍራ።' : 'Debre Selam Kidist Mariam Ethiopian Orthodox Tewahedo Church in Washington, D.C. provides religious services, sacraments, and spiritual education to the community.'">
+    <!-- About Section -->
+    <section id="about" class="max-w-4xl mx-auto space-y-4 mb-10">
+      <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+        <span class="text-amber-600 font-bold text-xs tracking-wider uppercase" x-text="lang === 'am' ? 'ደብረ ሰላም ቅድስት ማርያም' : 'DSK Mariam Church'"></span>
+        <h2 class="text-2xl font-serif font-bold text-slate-900 mt-1 mb-3" x-text="lang === 'am' ? 'ስለ ቤተ ክርስቲያናችን' : 'About Our Parish'"></h2>
+        <p class="text-slate-600 text-sm leading-relaxed" x-text="lang === 'am' ? 'በዋሽንግተን ዲሲ የሚገኘው የደብረ ሰላም ቅድስት ማርያም ኢ/ኦ/ተ ቤተ ክርስቲያን የሐዋርያትን እምነት፣ ሥርዓት እና ትውፊት ጠብቆ በዲሲ እና በአካባቢው ለሚገኘው ምእመን መንፈሳዊ አገልግሎት በመስጠት ላይ ይገኛል።' : 'Debre Selam Kidist Mariam Ethiopian Orthodox Tewahedo Church serves as a spiritual sanctuary for Orthodox Christians in Washington, D.C.'">
         </p>
       </div>
+    </section>
 
-      <!-- Address & Contact Details -->
-      <div>
-        <h3 class="text-white font-bold text-base mb-3" x-text="lang === 'am' ? 'የቤተ ክርስቲያኑ አድራሻ' : 'Parish Address & Phone'"></h3>
-        <p class="text-xs text-slate-300 flex items-start gap-2">
-          <i data-lucide="map-pin" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
-          <span>
-            <strong>Debre Selam Kidist Mariam Church</strong><br />
-            1350 Buchanan St NW,<br />
-            Washington, DC 20011
-          </span>
-        </p>
-        <p class="text-xs text-slate-300 flex items-center gap-2 mt-3">
-          <i data-lucide="phone" class="w-4 h-4 text-amber-400 shrink-0"></i>
-          <span>(202) 882-1205</span>
-        </p>
-        <p class="text-xs text-slate-300 flex items-center gap-2 mt-1">
-          <i data-lucide="globe" class="w-4 h-4 text-amber-400 shrink-0"></i>
-          <a href="https://dskmariamdc.org" target="_blank" class="text-amber-400 hover:underline">dskmariamdc.org</a>
-        </p>
-        <div class="mt-3">
-          <a href="https://maps.google.com/?q=1350+Buchanan+St+NW,+Washington,+DC+20011" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-amber-300 bg-slate-900 border border-amber-500/40 px-3 py-1.5 rounded-lg hover:bg-slate-800 transition">
-            <i data-lucide="navigation" class="w-3.5 h-3.5 text-amber-400"></i>
-            <span x-text="lang === 'am' ? 'በጉግል ካርታ አቅጣጫ ይመልከቱ' : 'Get Directions on Google Maps'"></span>
+    <!-- Schedule Section -->
+    <section id="schedule" class="max-w-4xl mx-auto mb-10">
+      <div class="text-center mb-6">
+        <h2 class="text-2xl font-serif font-bold text-slate-900" x-text="lang === 'am' ? 'የሱባኤ ዕለታዊ መርሃ ግብር' : 'Subae Fasting Schedule'"></h2>
+        <p class="text-slate-500 text-xs mt-1" x-text="lang === 'am' ? 'ከነሐሴ ፩ እስከ ነሐሴ ፲፮ (August 7 – August 22)' : 'August 7 – August 22'"></p>
+
+        <div class="mt-4 flex justify-center gap-2 overflow-x-auto no-scrollbar py-1">
+          <button @click="activeTab = 'all'" :class="activeTab === 'all' ? 'bg-amber-600 text-white shadow-md' : 'bg-white text-slate-700 border border-slate-200'" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition shrink-0" x-text="lang === 'am' ? 'ሁሉም ቀናት' : 'All Days'"></button>
+          <button @click="activeTab = 'weekdays'" :class="activeTab === 'weekdays' ? 'bg-amber-600 text-white shadow-md' : 'bg-white text-slate-700 border border-slate-200'" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition shrink-0" x-text="lang === 'am' ? 'የሳምንት ቀናት' : 'Weekdays'"></button>
+          <button @click="activeTab = 'weekends'" :class="activeTab === 'weekends' ? 'bg-amber-600 text-white shadow-md' : 'bg-white text-slate-700 border border-slate-200'" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition shrink-0" x-text="lang === 'am' ? 'እሁድ እና በዓላት' : 'Sundays & Feasts'"></button>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div x-show="activeTab === 'all' || activeTab === 'weekdays'" class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm">
+          <div class="flex justify-between items-center mb-2">
+            <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full" x-text="lang === 'am' ? 'ከሰኞ - ዓርብ' : 'Mon - Fri'"></span>
+            <span class="text-[11px] text-slate-400" x-text="lang === 'am' ? 'የሳምንቱ ቀናት' : 'Weekdays'"></span>
+          </div>
+          <h3 class="font-bold text-slate-900 text-sm mb-2" x-text="lang === 'am' ? 'የሱባኤ ዕለታዊ መርሃ ግብር' : 'Weekday Subae Schedule'"></h3>
+          <div class="text-xs text-slate-600 space-y-1.5 pt-2 border-t border-slate-100">
+            <div><strong class="text-slate-800">ሰዓታት:</strong> 1:00 AM - 6:00 AM</div>
+            <div><strong class="text-slate-800">ኪዳን:</strong> 6:00 AM - 8:00 AM</div>
+            <div><strong class="text-slate-800">ቅዳሴ:</strong> 12:00 PM - 3:00 PM</div>
+          </div>
+        </div>
+
+        <div x-show="activeTab === 'all' || activeTab === 'weekends'" class="bg-amber-50/80 border border-amber-200 rounded-2xl p-4 shadow-sm">
+          <div class="flex justify-between items-center mb-2">
+            <span class="bg-amber-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full" x-text="lang === 'am' ? 'እሁድ' : 'Sunday'"></span>
+            <span class="text-[11px] text-amber-800 font-bold" x-text="lang === 'am' ? 'ሰንበት' : 'Sunday'"></span>
+          </div>
+          <h3 class="font-bold text-slate-900 text-sm mb-2" x-text="lang === 'am' ? 'የእሁድ ሰንበት ቅዳሴ' : 'Sunday Liturgy'"></h3>
+          <div class="text-xs text-slate-700 space-y-1.5 pt-2 border-t border-amber-200/60">
+            <div><strong class="text-amber-950">ሰዓታት:</strong> 12:00 AM - 6:00 AM</div>
+            <div><strong class="text-amber-950">ቅዳሴ:</strong> 6:00 AM - 11:00 AM</div>
+          </div>
+        </div>
+
+        <div x-show="activeTab === 'all' || activeTab === 'weekends'" class="bg-gradient-to-br from-amber-600 to-amber-800 text-white rounded-2xl p-4 shadow-lg">
+          <div class="flex justify-between items-center mb-2">
+            <span class="bg-white text-amber-900 font-black text-[11px] px-2.5 py-0.5 rounded-full" x-text="lang === 'am' ? 'ነሐሴ ፲፮' : 'Aug 22'"></span>
+            <span class="text-[11px] text-amber-100 font-bold uppercase" x-text="lang === 'am' ? 'ታላቁ በዓል' : 'Great Feast'"></span>
+          </div>
+          <h3 class="font-extrabold text-white text-base" x-text="lang === 'am' ? 'የእመቤታችን የዕርገት በዓል' : 'Ascension of St. Mary'"></h3>
+          <p class="text-xs text-amber-100 mt-2 border-t border-amber-500/50 pt-2"><strong class="text-white">ቅዳሴ:</strong> 3:00 AM – 11:00 AM</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- App-Style Live Stream CTA -->
+    <section id="livestream" class="max-w-4xl mx-auto mb-10">
+      <div class="bg-slate-900 text-white rounded-2xl p-6 text-center border border-amber-500/30 shadow-xl">
+        <i data-lucide="youtube" class="w-12 h-12 text-red-500 mx-auto mb-2"></i>
+        <h2 class="text-xl font-serif font-bold text-amber-400" x-text="lang === 'am' ? 'ቀጥታ ስርጭት ይከታተሉ' : 'Watch Live Streams'"></h2>
+        <p class="text-slate-300 text-xs mt-2 mb-5" x-text="lang === 'am' ? 'የሰዓታት፣ የቅዳሴ እና የትምህርተ ወንጌል መርሃ ግብር በደብረ ሰላም ቅድስት ማርያም ዩቲዩብ ይከታተሉ።' : 'Follow daily Seatat vigils and Divine Liturgies online.'"></p>
+        
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="https://www.youtube.com/@dskmeotc21" target="_blank" class="bg-red-600 active:bg-red-700 text-white font-bold py-3 px-5 rounded-xl transition flex items-center justify-center gap-2 text-xs shadow-md">
+            <i data-lucide="play-circle" class="w-4 h-4"></i> 
+            <span x-text="lang === 'am' ? 'የደብረ ሰላም ዩቲዩብ' : 'DSK Mariam YouTube'"></span>
+          </a>
+          <a href="https://www.facebook.com/dskmariam/" target="_blank" class="bg-blue-600 active:bg-blue-700 text-white font-bold py-3 px-5 rounded-xl transition flex items-center justify-center gap-2 text-xs shadow-md">
+            <i data-lucide="facebook" class="w-4 h-4"></i> 
+            <span x-text="lang === 'am' ? 'የደብረ ሰላም ፌስቡክ' : 'DSK Mariam Facebook'"></span>
           </a>
         </div>
       </div>
+    </section>
 
-      <div>
-        <h3 class="text-white font-bold text-base mb-3" x-text="lang === 'am' ? 'የንሥሐ አባቶች አገልግሎት' : 'Spiritual Confession & Hours'"></h3>
-        <p class="text-xs text-slate-400" x-text="lang === 'am' ? 'በየዕለቱ ከቅዳሴ በኋላ የካህናት አባቶቻችን የንሥሐ፣ የመንፈሳዊ ምክር እና የጸሎት አገልግሎት ይሰጣሉ።' : 'Clergy members are available daily following Divine Liturgy services for Holy Confession, spiritual counseling, and prayer requests.'">
-        </p>
+    <!-- Address & Map Link Footer -->
+    <footer id="contact" class="max-w-4xl mx-auto text-center space-y-4 pt-4 border-t border-slate-200">
+      <div class="text-xs text-slate-600 space-y-1">
+        <p class="font-bold text-slate-800">Debre Selam Kidist Mariam Church</p>
+        <p>1350 Buchanan St NW, Washington, DC 20011</p>
+        <p class="text-amber-700 font-semibold">(202) 882-1205</p>
       </div>
-    </div>
 
-    <div class="mt-12 pt-6 border-t border-slate-800/80 text-center text-xs text-slate-500">
-      © 2026 Debre Selam Kidist Mariam Ethiopian Orthodox Tewahedo Church (Washington, D.C.). ጾመ ፍልሰታ ፪፯፻፲፰ ዓ.ም
+      <div class="flex flex-wrap justify-center gap-3 pt-2">
+        <a href="https://maps.google.com/?q=1350+Buchanan+St+NW,+Washington,+DC+20011" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-slate-900 bg-amber-400 active:bg-amber-500 px-4 py-2.5 rounded-xl shadow-md transition">
+          <i data-lucide="navigation" class="w-4 h-4"></i>
+          <span x-text="lang === 'am' ? 'በካርታ አቅጣጫ ይመልከቱ' : 'Open in Maps'"></span>
+        </a>
+
+        <a href="https://ibm41124-hue.github.io/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-slate-200 bg-slate-800 active:bg-slate-700 border border-slate-700 px-4 py-2.5 rounded-xl transition">
+          <i data-lucide="code" class="w-4 h-4 text-amber-400"></i>
+          <span x-text="lang === 'am' ? 'ባሕረ ሐሳብ' : 'Bahre Hasab'"></span>
+        </a>
+      </div>
+
+      <p class="text-[10px] text-slate-400 pt-4">
+        © 2026 Debre Selam Kidist Mariam EOTC Washington DC.
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <div class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 text-slate-400 z-50 md:hidden px-2 py-2">
+    <div class="flex justify-around items-center text-[10px] font-medium">
+      
+      <a href="#" class="flex flex-col items-center gap-1 hover:text-amber-400 active:text-amber-400 transition text-amber-400">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span x-text="lang === 'am' ? 'ዋና ገጽ' : 'Home'"></span>
+      </a>
+
+      <a href="#schedule" class="flex flex-col items-center gap-1 hover:text-amber-400 active:text-amber-400 transition">
+        <i data-lucide="calendar" class="w-5 h-5"></i>
+        <span x-text="lang === 'am' ? 'መርሃ ግብር' : 'Schedule'"></span>
+      </a>
+
+      <a href="/calendar/" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-1 hover:text-amber-400 active:text-amber-400 transition">
+        <i data-lucide="calendar-days" class="w-5 h-5"></i>
+        <span x-text="lang === 'am' ? 'ቀን መለወጫ' : 'Calendar'"></span>
+      </a>
+
+      <a href="#livestream" class="flex flex-col items-center gap-1 hover:text-amber-400 active:text-amber-400 transition">
+        <i data-lucide="tv" class="w-5 h-5"></i>
+        <span x-text="lang === 'am' ? 'ስርጭት' : 'Live'"></span>
+      </a>
+
+      <a href="#contact" class="flex flex-col items-center gap-1 hover:text-amber-400 active:text-amber-400 transition">
+        <i data-lucide="map-pin" class="w-5 h-5"></i>
+        <span x-text="lang === 'am' ? 'አድራሻ' : 'Contact'"></span>
+      </a>
+
     </div>
-  </footer>
+  </div>
 
   <script>
     lucide.createIcons();
